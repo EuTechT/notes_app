@@ -4,10 +4,35 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/style.css">
-  <title>Home</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="css/main.css">
+  <title>Notes App</title>
 </head>
 <body>
-  <h1>Hello World!</h1>
+  <header>
+      <h1>Notes App</h1>
+  </header>
+  <main>
+    <section>
+      <div class="wrapper">
+        <% if (notes.length > 0) { %>
+          <% for (let i = 0, len = notes.length; i < len; i++) { %>
+            <div class="note">
+              <div class="info">
+                <h2><a href="/note?id=<%= notes[i].id %>"><%= notes[i].title %></a></h2>
+                <span><em><%= notes[i].creation_date_and_time %></em></span>
+              </div>
+              <div class="description">
+                <p><%= notes[i].description %></p>
+              </div>
+            </div>
+          <% } %>
+        <% } else { %>
+          <h2 class="empty">Empty...</h2>
+        <% } %>
+      </div>
+    </section>
+    <a id="create-note" href="/create"><span class="material-icons">add</span></a>
+  </main>
 </body>
 </html>

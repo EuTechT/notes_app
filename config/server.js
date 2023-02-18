@@ -14,6 +14,7 @@ consign()
   .include('./app/routes')
   .then('./app/controllers')
   .then('./app/models')
+  .then('./config/dbConnection.js')
   .into(app)
 
 module.exports = app
