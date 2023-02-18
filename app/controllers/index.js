@@ -4,5 +4,6 @@ module.exports.index = function(app, req, res) {
 
   notesDAO.getNotes((error, result) => {
     res.render('home/index', { notes: result.rows })
+    connection.end()
   })
 }

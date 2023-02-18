@@ -4,8 +4,12 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="css/main.css">
+  <script src="js/index.js" defer></script>
   <title>Notes App</title>
 </head>
 <body>
@@ -20,7 +24,7 @@
             <div class="note">
               <div class="info">
                 <h2><a href="/note?id=<%= notes[i].id %>"><%= notes[i].title %></a></h2>
-                <span><em><%= notes[i].creation_date_and_time %></em></span>
+                <span><em><%= notes[i].creation_date_and_time.toLocaleDateString() %></em></span>
               </div>
               <div class="description">
                 <p><%= notes[i].description %></p>
@@ -32,7 +36,35 @@
         <% } %>
       </div>
     </section>
-    <a id="create-note" href="/create"><span class="material-icons">add</span></a>
+    <button id="open-form">
+      <span class="material-icons">add</span>
+    </button>
   </main>
+  <div class="modal">
+    <div class="modal__content">
+      <form action="/note" method="POST">
+        <div class="input">
+          <label for="title">Title</label>
+          <input type="text" name="title" id="title" maxlength="100" required>
+        </div>
+        <div class="input">
+          <label for="description">Description</label>
+          <textarea name="description" id="description" cols="30" rows="10" required></textarea>
+        </div>
+        <div class="buttons">
+          <button id="cancel">
+            <span class="material-icons">
+              close
+            </span>
+          </button>
+          <button type="submit" id="create">
+            <span class="material-icons">
+              done
+            </span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
 </body>
 </html>

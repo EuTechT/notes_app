@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="css/main.css">
+  <title>Notes App | Note</title>
+  <script src="js/note.js" defer></script>
+</head>
+<body>
+  <header>
+      <div class="wrapper">
+        <h1>Notes App</h1>
+        <nav>
+          <a href="/">
+            <span class="material-icons">
+              arrow_back
+            </span>
+          </a>
+          <ul>
+            <li>
+              <span id="more" class="material-icons">
+                more_vert
+              </span>
+              <ul class="submenu">
+                <li>
+                  <a href="" id="edit">
+                    Edit
+                    <span class="material-icons">
+                      edit
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a href="" id="delete">
+                    Delete
+                    <span class="material-icons">
+                      delete_forever
+                    </span>
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </div>
+  </header>
+  <main>
+    <section id="note">
+      <div class="wrapper">
+        <div class="note">
+          <input type="hidden" name="id" id="id" value="<%= note.id %>">
+          <div class="info">
+            <h2 id="title"><%= note.title %></h2>
+            <span><em><%= note.creation_date_and_time.toLocaleDateString() %></em></span>
+          </div>
+          <div class="description">
+            <p id="description"><%= note.description %></p>
+          </div>
+          <button id="save">
+            <span class="material-icons">
+              done
+            </span>
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
