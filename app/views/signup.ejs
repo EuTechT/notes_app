@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Signup - App Notes</title>
+<%- include('partials/links') %>
+<body>
+  <main>
+    <div class="wrapper">
+      <div class="form-container">
+        <h2>Signup</h2>
+        <% if (userExists) { %>
+          <span class="error">* Nome de usuário já em uso</span>
+        <% } %>
+        <form action="/user" method="post">
+          <div class="input">
+            <input type="text" name="name" id="name" value="<%= user.name %>" required>
+            <label for="name">Nome</label>
+          </div>
+          <% if (userExists) { %>
+            <div class="input">
+              <input type="text" name="user" id="user" class="error" value="<%= user.user %>" required>
+              <label for="user" class="error">Usuário</label>
+            </div>
+          <% } else { %>
+            <div class="input">
+              <input type="text" name="user" id="user" value="<%= user.user %>" required>
+              <label for="user">Usuário</label>
+            </div>
+          <% } %>
+          <div class="input">
+            <input type="password" name="password" id="password" value="<%= user.password %>" required>
+            <label for="password">Senha</label>
+          </div>
+          <button type="submit" id="btn-login" class="btn">
+            <span>
+              Cadastrar
+            </span>
+            <span class="material-icons">
+              done
+            </span>
+          </button>
+          <a id="link-signup" class="link" href="/">Já tem uma conta? Entre agora!</a>
+        </form>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

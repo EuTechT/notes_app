@@ -1,0 +1,190 @@
+/*
+    GENERAL
+*/
+:root {
+  font-size: 62.5%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+html {
+  font-family: 'Roboto', sans-serif;;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-size: 1.6rem;
+  background-color: #274862;
+  color: #fff;
+}
+
+main {
+  padding: 2rem;
+}
+
+.wrapper {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+
+
+/*
+    FORM
+*/
+
+.form-container {
+  width: 100%;
+  max-width: 40rem;
+  margin: 5vh auto 0;
+  padding: 2rem;
+  border-radius: 1rem;
+  background-color: #172c3c;
+}
+
+.form-container h2 {
+  text-align: center;
+  margin-bottom: 2.2rem;
+}
+
+.input {
+  margin-bottom: 3rem;
+  display: flex;
+  flex-direction: column;
+
+  position: relative;
+}
+
+.input input {
+  border-radius: 1rem;
+  padding: 0.8rem;
+  border: none;
+  font-size: 1.6rem;
+}
+
+.input label {
+  color: #000;
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  transform: translateY(-50%);
+  opacity: 0.75;
+  transition: all 0.2s linear;
+  font-size: 1.4rem;
+}
+
+.input input:focus + label,
+.input input:valid + label {
+  transform: translateY(-200%);
+  color: #fff;
+  opacity: 1;
+  font-size: 1.6rem;
+}
+
+.btn {
+  margin: 0 auto;
+  /* width: 11rem;
+  height: 4rem; */
+  padding: 1rem 2.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  cursor: pointer;
+  border: none;
+  border-radius: 1rem;
+  border-right: 0.125rem solid #274862;
+  border-bottom: 0.5rem solid #274862;
+  border-left: 0.125rem solid #274862;
+  position: relative;
+  overflow: hidden;
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+.btn > span {
+  position: relative;
+  z-index: 2;
+  transition: color 0.2s linear;
+}
+
+.btn::before {
+  content: "";
+  width: 0;
+  height: 100%;
+  position: absolute;
+  z-index: 0;
+  left: 0;
+  background-color: #d96831;
+  transition: width 0.2s linear;
+}
+
+.btn:hover::before {
+  width: 100%;
+}
+
+.btn:hover span {
+  color: #fff;
+}
+
+
+.btn:active {
+  border-bottom: 0.3rem solid #274862;
+}
+
+.link {
+  display: block;
+  width: fit-content;
+  margin: 2rem auto 0;
+  text-decoration: none;
+  color: #d96831;
+  font-size: 1.4rem;
+  position: relative;
+}
+
+.link::after {
+  content: "";
+  position: absolute;
+  bottom: -0.1rem;
+  left: 0;
+  width: 0;
+  height: 0.2rem;
+  background-color: #d96831;
+  transition: width 0.2s linear;
+}
+
+.link:hover::after {
+  width: 100%;
+}
+
+
+/*
+    ERRORS
+*/
+span.error {
+  display: inline-block;
+  color: rgb(214, 6, 6);
+  margin-bottom: 3rem;
+}
+
+.input input.error {
+  border: 0.2rem solid rgb(214, 6, 6);
+}
+
+.input input:focus + label.error,
+.input input:valid + label.error {
+  color: rgb(214, 6, 6);
+}

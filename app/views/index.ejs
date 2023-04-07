@@ -5,8 +5,51 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login - App Notes</title>
-</head>
+<%- include('partials/links') %>
 <body>
-  <h1>Login - App Notes</h1>
+  <main>
+    <div class="wrapper">
+      <div class="form-container">
+        <h2>Login</h2>
+        <% if (userNotExists) { %>
+          <span class="error">* Usuário ou senha incorretos</span>
+        <% } %>
+        <form action="/login" method="post">
+          <% if (userNotExists) { %>
+            <div class="input">
+              <input type="text" name="user" id="user" class="error" value="<%= user.user %>" required>
+              <label for="user" class="error">Usuário</label>
+            </div>
+          <% } else { %>
+            <div class="input">
+              <input type="text" name="user" id="user" required>
+              <label for="user">Usuário</label>
+            </div>
+          <% } %>
+          
+          <% if (userNotExists) { %>
+            <div class="input">
+              <input type="password" name="password" id="password" class="error" value="<%= user.password %>" required>
+              <label for="password" class="error">Senha</label>
+            </div>
+          <% } else { %>
+            <div class="input">
+              <input type="password" name="password" id="password" required>
+              <label for="password">Senha</label>
+            </div>
+          <% } %>
+          <button type="submit" id="btn-login" class="btn">
+            <span>
+              Entrar
+            </span>
+            <span class="material-icons">
+              login
+            </span>
+          </button>
+          <a id="link-signup" class="link" href="/signup">Não tem uma conta? Crie agora!</a>
+        </form>
+      </div>
+    </div>
+  </main>
 </body>
 </html>
