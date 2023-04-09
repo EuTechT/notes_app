@@ -1,5 +1,9 @@
 module.exports.index = (app, req, res) => {
-  res.render('index', { userNotExists: false, user: {} })
+  if (req.session.authenticated) {
+    res.redirect('/home')
+  } else {
+    res.render('index', { userNotExists: false, user: {} })
+  }
 }
 
 module.exports.login = (app, req, res) => {
@@ -12,7 +16,11 @@ module.exports.login = (app, req, res) => {
   userDAO.select(user)
     .then(result => {
       if (result.rows.length > 0) {
-        res.send('User on')
+        req.session.authenticated = true
+        req.session.user = result.rows[0]._user
+        req.session.password = result.rows[0].password
+        // res.render('home', { user: result.rows[0] })
+        res.redirect('/home')
       } else {
         res.render('index', { 
           userNotExists: true,

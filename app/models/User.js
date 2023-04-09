@@ -1,6 +1,14 @@
 class User {
   constructor() {}
 
+  getId() {
+    return this.id
+  }
+
+  setId(id) {
+    this.id = id
+  }
+
   getName() {
     return this.name
   }

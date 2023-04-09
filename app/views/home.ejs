@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home - Notes App</title>
+  <%- include('partials/links') %>
+  <script src="/js/script.js" defer></script>
+  <script src="/js/deleteAccount.js" defer></script>
+</head>
+<body>
+  <header>
+    <div class="wrapper">
+      <h1>Notes App</h1>
+
+      <div id="btn-menu">
+        <%= user.name[0].toUpperCase() %>
+      </div>
+      <nav>
+        <ul>
+          <li>
+            <a href="" class="navlink" id="delete-account">
+              <span>Excluir conta</span>
+              <span class="material-icons">
+                delete
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="/exit" class="navlink" id="logout">
+              <span>Sair</span>
+              <span class="material-icons">
+                logout
+              </span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <section id="create-note">
+      <div class="wrapper">
+        <h2>Crie sua anotação</h2>
+        <div class="form-container">
+          <form action="/note" method="post">
+            <input type="hidden" name="userId" value="<%= user.id %>">
+            <div class="input">
+              <input type="text" name="title" id="title" required>
+              <label for="title">Título</label>
+            </div>
+            <div class="input">
+              <textarea name="note" id="note" cols="30" rows="5" required></textarea>
+              <label for="note">Descrição</label>
+            </div>
+            <button class="btn">
+              <span>
+                Criar
+              </span>
+              <span class="material-icons">
+                add
+              </span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+    <section id="notes">
+      <div class="wrapper">
+        <div id="notes-container">
+          <h2>Suas anotações</h2>
+          <% notes.forEach(note => { %>
+            <div class="note">
+              <h3><a href="/note/<%= note.id %>"><%= note.title %></a></h3>
+              <span>Criada em: <em><%= (new Date(note.creation_timestamp)).toLocaleDateString() %></em></span>
+              <span>Atualizada em: <em><%= (new Date(note.update_timestamp)).toLocaleDateString() %></em></span>
+              <p><%= note.note %></p>
+            </div>
+          <% }) %>
+        </div>
+      </div>
+    </section>
+  </main>
+  <a href="" id="btn-go-up">
+    <span class="material-icons">
+      arrow_upward
+    </span>
+  </a>
+  <div id="modal">
+    <div id="modal-content">
+      <h2>Sua conta foi deletada com sucesso!</h2>
+      <p>
+        Redirecionando para a página de login em <span id="timer">5</span>s...
+      </p>
+    </div>
+  </div>
+  <input type="hidden" name="user_id" id="user-id" value="<%= user.id %>">
+</body>
+</html>

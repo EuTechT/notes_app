@@ -30,6 +30,20 @@ class UserDAO {
       this._connection.end()
     }
   }
+
+  async delete(user) {
+    try {
+      await this._connection.connect()
+
+      const result = await this._connection.query(`DELETE FROM users WHERE id = ${user.getId()}`)
+      return result
+    } catch(err) {
+      throw err
+    } finally {
+      console.log('Closing connection...')
+      this._connection.end()
+    }
+  }
 }
 
 module.exports = () => UserDAO
