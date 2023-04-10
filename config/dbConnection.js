@@ -9,7 +9,7 @@ function dbConnection() {
   //   password: 'H2EboA2KxhGqeadrsqYwbXaAsOzKNQhj'
   // })
 
-  new pg.Client('postgres://notes_app_kblp_user:H2EboA2KxhGqeadrsqYwbXaAsOzKNQhj@dpg-cgq7k3m4dadce8312qcg-a.oregon-postgres.render.com/notes_app_kblp')
+  new pg.Client('postgres://notes_app_kblp_user:H2EboA2KxhGqeadrsqYwbXaAsOzKNQhj@dpg-cgq7k3m4dadce8312qcg-a/notes_app_kblp')
 }
 
 module.exports = () => dbConnection
