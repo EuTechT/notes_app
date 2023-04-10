@@ -6,4 +6,12 @@ module.exports = app => {
   app.get('/note/:id', (req, res) => {
     app.app.controllers.note.getNote(app, req, res)
   })
+
+  app.delete('/note/:id', (req, res) => {
+    app.app.controllers.note.deleteNote(app, req, res)
+  })
+
+  app.put('/note/:id', (req, res) => {
+    app.app.controllers.note.updateNote(app, req, res)
+  })
 }

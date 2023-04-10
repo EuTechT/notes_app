@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Note - Notes App</title>
+  <%- include('partials/links') %>
+  <script src="/js/note.js" defer></script>
+</head>
+<body>
+  <main>
+    <section id="note">
+      <div class="wrapper">
+        <a href="/home" id="back">
+          <span class="material-icons">
+            arrow_back
+          </span>
+          Voltar
+        </a>
+        <div class="note">
+          <span id="warning"></span>
+          <input type="hidden" name="note_id" id="note-id" value="<%= note.id %>">
+          <h3 id="note__title" contenteditable="false"><%= note.title %></h3>
+          <span>Criada em: <em><%= (new Date(note.creation_timestamp)).toLocaleDateString() %></em></span>
+          <span>Atualizada em: <em><%= (new Date(note.update_timestamp)).toLocaleDateString() %></em></span>
+          <p id="note__note" contenteditable="false"><%= note.note %></p>
+          <div class="buttons">
+            <button id="edit" class="btn">
+              <span>
+                Editar
+              </span>
+              <span class="material-icons">
+                edit
+              </span>
+            </button>
+            <button id="delete" class="btn">
+              <span>
+                Excluir
+              </span>
+              <span class="material-icons">
+                delete_forever
+              </span>
+            </button>
+            <button id="save" class="btn hide">
+              <span>
+                Salvar
+              </span>
+              <span class="material-icons">
+                save
+              </span>
+            </button>
+            <button id="cancel" class="btn hide">
+              <span>
+                Cancelar
+              </span>
+              <span class="material-icons">
+                cancel
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

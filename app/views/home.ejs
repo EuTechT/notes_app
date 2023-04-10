@@ -8,12 +8,13 @@
   <%- include('partials/links') %>
   <script src="/js/script.js" defer></script>
   <script src="/js/deleteAccount.js" defer></script>
+  <script src="/js/validation.js" defer></script>
 </head>
 <body>
   <header>
     <div class="wrapper">
-      <h1>Notes App</h1>
-
+      <h1><a href="/home">Notes App</a></h1>
+  
       <div id="btn-menu">
         <%= user.name[0].toUpperCase() %>
       </div>
@@ -23,7 +24,7 @@
             <a href="" class="navlink" id="delete-account">
               <span>Excluir conta</span>
               <span class="material-icons">
-                delete
+                delete_forever
               </span>
             </a>
           </li>
@@ -44,7 +45,8 @@
       <div class="wrapper">
         <h2>Crie sua anotação</h2>
         <div class="form-container">
-          <form action="/note" method="post">
+          <span id="warning"></span>
+          <form action="/note" method="post" id="form-create-note">
             <input type="hidden" name="userId" value="<%= user.id %>">
             <div class="input">
               <input type="text" name="title" id="title" required>
@@ -54,7 +56,7 @@
               <textarea name="note" id="note" cols="30" rows="5" required></textarea>
               <label for="note">Descrição</label>
             </div>
-            <button class="btn">
+            <button type="submit" class="btn" id="btn-create-note">
               <span>
                 Criar
               </span>

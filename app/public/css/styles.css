@@ -214,6 +214,10 @@ header .wrapper {
   position: relative;
 }
 
+header .wrapper h1 a {
+  color: #fff;
+}
+
 #btn-menu {
   width: 5rem;
   height: 5rem;
@@ -354,7 +358,7 @@ header nav ul li {
 
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.2rem;
 }
 
 .note h3 a {
@@ -375,6 +379,14 @@ header nav ul li {
 
 .note h3 a:hover::after {
   width: 100%;
+}
+
+.note span {
+  font-size: 1.4rem;
+}
+
+.note p {
+  margin-top: 1rem;
 }
 
 #btn-go-up {
@@ -427,4 +439,60 @@ header nav ul li {
 
 #modal-content h2 {
   margin-bottom: 1rem;
+}
+
+
+/*
+    NOTE
+*/
+#back {
+  width: fit-content;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.8rem;
+  margin-bottom: 3rem;
+}
+
+.buttons {
+  margin-top: 2rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.buttons button {
+  width: 11rem;
+  height: 4.5rem;
+  margin: unset;
+}
+
+.buttons #delete::before,
+.buttons #cancel::before {
+  background-color: rgb(238, 8, 8);
+}
+
+.buttons #save::before {
+  background-color: rgb(4, 175, 4);
+}
+
+.hide {
+  display: none;
+}
+
+.editable {
+  position: relative;
+}
+
+.editable::after {
+  content: "";
+  width: 100%;
+  height: 0.2rem;
+  position: absolute;
+  left: 0;
+  bottom: -0.4rem;
+  background-color: #d96831;
 }
